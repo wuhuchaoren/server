@@ -119,8 +119,12 @@ node app.js # 即可使用 repo 的最新开发内容
 
 ```bash
 yarn
-DEVELOPMENT=true node app.js
+DEVELOPMENT=true yarn node app.js
 ```
+
+### BetterNCM 一键安装器
+
+请移步至 [RevivedUnblockInstaller](https://github.com/ReviveUnblockNCMInstaller/RevivedUnblockInstaller)。
 
 ### Android Xposed 模块
 
@@ -180,14 +184,17 @@ node app.js -o bilibili ytdlp
 | 变量名称              | 类型 | 描述                                                                                                    | 示例                                                             |
 | --------------------- | ---- | ------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | ENABLE_FLAC           | bool | 激活无损音质获取                                                                                        | `ENABLE_FLAC=true`                                               |
-| ENABLE_LOCAL_VIP      | bool | 激活本地黑胶 VIP                                                                                        | `ENABLE_LOCAL_VIP=true`                                          |
+| ENABLE_LOCAL_VIP      | str  | 激活本地黑胶 VIP，可选值：`true`（等同于 CVIP）、`cvip` 和 `svip`                                       | `ENABLE_LOCAL_VIP=svip`                                          |
+| LOCAL_VIP_UID         | str  | 仅对这些 UID 激活本地黑胶 VIP，默认为对全部用户生效                                                     | `LOCAL_VIP_UID=123456789,1234,123456`                            |
 | ENABLE_HTTPDNS        | bool | 激活故障的 Netease HTTPDNS 查询（不建议）                                                               | `ENABLE_HTTPDNS=true`                                            |
-| DISABLE_UPGRADE_CHECK | bool | 禁用更新检测。                                                                                          | `DISABLE_UPGRADE_CHECK=true`                                     |
+| BLOCK_ADS             | bool | 屏蔽应用内部分广告                                                                                      | `BLOCK_ADS=true`                                                 |
+| DISABLE_UPGRADE_CHECK | bool | 禁用更新检测                                                                                            | `DISABLE_UPGRADE_CHECK=true`                                     |
 | DEVELOPMENT           | bool | 激活开发模式。需要自己用 `yarn` 安装依赖 (dependencies)                                                 | `DEVELOPMENT=true`                                               |
 | FOLLOW_SOURCE_ORDER   | bool | 严格按照配置音源的顺序进行查询                                                                          | `FOLLOW_SOURCE_ORDER=true`                                       |
 | JSON_LOG              | bool | 输出机器可读的 JSON 记录格式                                                                            | `JSON_LOG=true`                                                  |
 | NO_CACHE              | bool | 停用 cache                                                                                              | `NO_CACHE=true`                                                  |
 | MIN_BR                | int  | 允许的最低源音质，小于该值将被替换                                                                      | `MIN_BR=320000`                                                  |
+| SELECT_MAX_BR         | bool | 选择所有音源中的最高码率替换音频                                                                        | `SELECT_MAX_BR=true`                                             |
 | LOG_LEVEL             | str  | 日志输出等级。请见〈日志等级〉部分。                                                                    | `LOG_LEVEL=debug`                                                |
 | LOG_FILE              | str  | 从 Pino 端设置日志输出的文件位置。也可以用 `*sh` 的输出重导向功能 (`node app.js >> app.log`) 代替       | `LOG_FILE=app.log`                                               |
 | JOOX_COOKIE           | str  | JOOX 音源的 wmid 和 session_key cookie                                                                  | `JOOX_COOKIE="wmid=<your_wmid>; session_key=<your_session_key>"` |
